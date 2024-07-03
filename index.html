@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Propósito com Deus</title>
+            <h3>Assim acreditamos</h3>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .counter, .quote {
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nosso Propósito com Deus</h1>
+    <div class="counter">
+        <p>Estamos no propósito há <span id="days-counter"></span> dias</p>
+    </div>
+    <div class="quote">
+        <p id="daily-quote"></p>
+    </div>
+
+    <script>
+        // Data de início do propósito
+        const startDate = new Date('2024-01-01');
+
+        // Função para calcular a diferença em dias
+        function calculateDays() {
+            const today = new Date();
+            const timeDifference = today - startDate;
+            const daysDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
+            return daysDifference;
+        }
+
+        // Frases para o propósito
+        const quotes = [
+            "Confie no Senhor de todo o seu coração.",
+            "A fé move montanhas.",
+            "Tudo posso naquele que me fortalece.",
+            "Deus é nosso refúgio e fortaleza.",
+            "A paz de Deus que excede todo entendimento.",
+            "O Senhor é meu pastor e nada me faltará.",
+            "A graça do Senhor é infinita."
+        ];
+
+        // Função para selecionar uma frase aleatória
+        function getDailyQuote() {
+            const dayIndex = calculateDays() % quotes.length;
+            return quotes[dayIndex];
+        }
+
+        // Atualizar contador de dias e frase
+        document.getElementById('days-counter').innerText = calculateDays();
+        document.getElementById('daily-quote').innerText = getDailyQuote();
+    </script>
+</body>
+</html>
