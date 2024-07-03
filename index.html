@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nosso Propósito com Deus</title>
-            <h3>Assim acreditamos</h3>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,10 +18,18 @@
             margin-top: 20px;
             font-size: 1.5em;
         }
+        .start-date-input {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <h1>Nosso Propósito com Deus</h1>
+    <div class="start-date-input">
+        <label for="start-date">Data de início do propósito:</label>
+        <input type="date" id="start-date">
+        <button onclick="updateStartDate()">Atualizar Data</button>
+    </div>
     <div class="counter">
         <p>Estamos no propósito há <span id="days-counter"></span> dias</p>
     </div>
@@ -32,7 +39,7 @@
 
     <script>
         // Data de início do propósito
-        const startDate = new Date('2024-01-01');
+        let startDate = new Date('2024-01-01');
 
         // Função para calcular a diferença em dias
         function calculateDays() {
@@ -59,9 +66,23 @@
             return quotes[dayIndex];
         }
 
-        // Atualizar contador de dias e frase
-        document.getElementById('days-counter').innerText = calculateDays();
-        document.getElementById('daily-quote').innerText = getDailyQuote();
+        // Função para atualizar a data de início
+        function updateStartDate() {
+            const inputDate = document.getElementById('start-date').value;
+            if (inputDate) {
+                startDate = new Date(inputDate);
+                updatePageContent();
+            }
+        }
+
+        // Função para atualizar o conteúdo da página
+        function updatePageContent() {
+            document.getElementById('days-counter').innerText = calculateDays();
+            document.getElementById('daily-quote').innerText = getDailyQuote();
+        }
+
+        // Atualizar o conteúdo da página na carga inicial
+        updatePageContent();
     </script>
 </body>
 </html>
